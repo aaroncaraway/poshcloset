@@ -1,0 +1,37 @@
+
+// Copyright 2018 The Chromium Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style license that can be
+// found in the LICENSE file.
+
+'use strict';
+
+// chrome.tabs.executeScript(null, {
+//     file: "getPoshIds.js"
+//   }, function() {
+//     // If you try and inject into an extensions page or the webstore/NTP you'll get an error
+//     if (chrome.runtime.lastError) {
+//       message.innerText = 'There was an error injecting script : \n' + chrome.runtime.lastError.message;
+//     }
+//   });
+// }
+
+// chrome.tabs.query({currentWindow: true}, function(result) {
+//     var all_tabs = []
+//     result.forEach(function(tab) {
+//         var url = tab.url || 'no url'
+//         var title = tab.title.replace(/['"]+/g, '') || 'no title'
+//         all_tabs.push("<div>["+title+"]"+"("+url+")"+"</div>")
+//     });
+//     var diyhtml = all_tabs.toString()
+//     var content = "<body><h1>A Record of Your Distractions!!</h1>" + diyhtml.replace(/,/g,"</br>") + "</body>"
+//     chrome.tabs.create({url:'javascript:document.write("'+ content +'")'});
+//     console.log(all_tabs)
+// });
+
+var content = "<body><h1>A Record of Your Distractions!!</h1></body>"
+chrome.tabs.create({url:'javascript:document.write("'+ content +'")'});
+
+var content = "<body><h1>A Record of Your Distractions!!</h1></body>"
+chrome.tabs.create({url:'javascript:document.write("'+ content +'")'});
+
+
