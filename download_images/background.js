@@ -5,11 +5,9 @@
 'use strict';
 
 // Declare extension default properties
-let downloadsArray = [];
+let sharedArray = [];
 let initialState = {
-  'savedImages': downloadsArray,
-  'thumbnails': false,
-  'saveImages': true
+  'sharedImages': sharedArray
 };
 
 // Set extension setting on installation

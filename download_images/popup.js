@@ -16,43 +16,11 @@ const scriptCode =
       return srcArray
     })();`;
 
-// const scriptCode =
-//     `(function() {
-//         let images = document.getElementsByClassName("share");
-//         let srcArray =
-//              Array.from(images).map(function(image) {
-//                return image.getAttribute('data-pa-attr-listing_id')
-//              });
-//         return srcArray
-//       })();`;
-  
-
-
-// Declare add image function to save downloaded images
-function addImage(url) {
-  console.log('getting here to addImage')
-  chrome.storage.local.get('savedImages', function(result) {
-    // Check if storage has exsisting arrays
-    // If array found, blank array is replaced with found array
-    // If no array, we add to created blank array
-    let downloadsArray = result.savedImages || [];
-    // Images are added
-    downloadsArray.push(url);
-    // Chrome stores the new array with the new image
-    chrome.storage.local.set({'savedImages': downloadsArray}, function() {
-      if (chrome.runtime.lastError) {
-        console.log(chrome.runtime.lastError);
-      } else {
-        console.log('Image saved successfully');
-      };
-    });
-  });
-};
 
 // Grabs the imageDiv from the popup
 let imageDiv = document.getElementById('image_div');
 function setUp(array) {
-  // alert('getting here to setUp')
+  alert('getting here to setUp')
   chrome.storage.local.get(
       ['saveImages', 'thumbnails'], function(config) {
     for (let src of array) {
@@ -62,14 +30,7 @@ function setUp(array) {
       console.log(newImage)
       // Add an onclick event listener
       newImage.addEventListener('click', function() {
-        
-        // Downloads and image when it is clicked on
-        chrome.downloads.download({url: newImage.src});
-        // Checks if extension is set to store images
-        if (config.saveImages === true) {
-          // If true, call addImage function
-          addImage(newImage.src);
-        };
+        // TODO: Share only this item
       });
       // Checks extension thumbnail settings
       if (config.thumbnails === true) {
@@ -93,12 +54,7 @@ chrome.tabs.executeScript({code: scriptCode}, function(result) {
   setUp(result[0]);
 });
 
-let optionsButton = document.getElementById('options_button');
-
-optionsButton.onclick = function() {
-  chrome.tabs.create({ url: "options.html" });
-}
-
+// Share script
 const shareCode =
   `(function() {
     var buttons = document.getElementsByClassName('share');
@@ -120,6 +76,7 @@ const shareCode =
 
 let shareButton = document.getElementById('share_button');
 
+// Runs script when share button is clicked
 shareButton.onclick = function() {
   alert('hi!')
   // chrome.tabs.executeScript({code: shareCode}, function(result) {
