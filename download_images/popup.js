@@ -98,3 +98,31 @@ let optionsButton = document.getElementById('options_button');
 optionsButton.onclick = function() {
   chrome.tabs.create({ url: "options.html" });
 }
+
+const shareCode =
+  `(function() {
+    var buttons = document.getElementsByClassName('share');
+    for(const b of buttons){
+      var b_id = b.getAttribute('data-pa-attr-listing_id')
+      var new_href= "/listing/share?post_id=" + b_id
+      var new_button = document.createElement('button')
+      new_button.setAttribute('class', 'PCshare')
+      new_button.setAttribute('data-ajax-method', 'post')
+      new_button.setAttribute('data-ajax', 'true')
+      new_button.setAttribute('href', new_href)
+      document.body.appendChild(new_button)
+      
+      }
+      var new_buttons = document.getElementsByClassName('PCshare');
+      for (const nb of new_buttons){nb.click()}
+
+    })();`;
+
+let shareButton = document.getElementById('share_button');
+
+shareButton.onclick = function() {
+  alert('hi!')
+  // chrome.tabs.executeScript({code: shareCode}, function(result) {
+  //   setUp(result[0]);
+  // });
+}

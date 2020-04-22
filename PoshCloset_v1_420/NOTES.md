@@ -52,7 +52,7 @@ https://poshmark.com/listing/share?post_id=5a1ca6ce4e8d17ad920e0d97
 
 
 ## DUMPING GROUND
-
+<!-- 
 https://di2ponv0v5otw.cloudfront.net/posts/2020/01/23/5e2a7e088557af914f57096e/s_5e2a7e1b138e189dd85fdfb8.jpg
 
 https://poshmark.com/listing/J-Crew-Grey-Suede-Anya-Ballet-Flats-5e2a7e088557af914f57096e
@@ -99,4 +99,4 @@ for(const b of buttons){
     new_button.setAttribute('href', new_href)
     document.body.appendChild(new_button)
     
-    }
+    } -->
